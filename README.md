@@ -31,3 +31,10 @@ myMean <- function(x) {
 Running myMean(assignment2) returned:
 
 [1] 19.25
+
+
+## Module 3 – Poll Data Analysis
+
+This module analyzes a fictional dataset comparing ABC and CBS poll results for 2016 election candidates. The analysis includes a data frame comparison and a bar chart visualization.
+
+Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
