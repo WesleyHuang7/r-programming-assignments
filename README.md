@@ -19,16 +19,13 @@ Error in myMean(assignment2) : object 'assignment' not found
 
 The function argument is named `assignment2`, but inside the function body it uses variables named `assignment` and `someData`, which do not exist. Because R requires exact variable names, it returns an “object not found” error instead of calculating the mean.
 
-````markdown
 ### Corrected Function
 
 ```r
 myMean <- function(x) {
   sum(x) / length(x)
 }
-
-## Correct Output
-
+```
 Running myMean(assignment2) returned:
 
 [1] 19.25
@@ -47,7 +44,7 @@ Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
 
 ### R Code
 
-```r
+```r 
 Freq <- c(0.6, 0.3, 0.4, 0.4, 0.2, 0.6, 0.3, 0.4, 0.9, 0.2)
 
 bloodp <- c(103, 87, 32, 42, 59, 109, 78, 205, 135, 176)
@@ -73,3 +70,4 @@ hist(
   main = "Histogram of Patient Blood Pressure",
   xlab = "Blood Pressure"
 )
+```
