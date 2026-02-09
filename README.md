@@ -19,6 +19,7 @@ Error in myMean(assignment2) : object 'assignment' not found
 
 The function argument is named `assignment2`, but inside the function body it uses variables named `assignment` and `someData`, which do not exist. Because R requires exact variable names, it returns an “object not found” error instead of calculating the mean.
 
+````markdown
 ### Corrected Function
 
 ```r
