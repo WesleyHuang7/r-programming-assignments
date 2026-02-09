@@ -38,3 +38,37 @@ Running myMean(assignment2) returned:
 This module analyzes a fictional dataset comparing ABC and CBS poll results for 2016 election candidates. The analysis includes a data frame comparison and a bar chart visualization.
 
 Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
+
+## Modlule 4 - Hospital Blood Pressure Analysis
+This module analyzes a fictional hospital dataset containing patient blood pressure measurements, doctor assessments, and final decisions regarding immediate care. Boxplots and histograms were used to explore the distribution of blood pressure values and compare low versus high priority patients.
+
+Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
+
+### R Code
+
+```r
+Freq <- c(0.6, 0.3, 0.4, 0.4, 0.2, 0.6, 0.3, 0.4, 0.9, 0.2)
+
+bloodp <- c(103, 87, 32, 42, 59, 109, 78, 205, 135, 176)
+
+first <- c(1, 1, 1, 1, 0, 0, 0, 0, NA, 1)
+
+second <- c(0, 0, 1, 1, 0, 0, 1, 1, 1, 1)
+
+finaldecision <- c(0, 1, 0, 1, 0, 1, 0, 1, 1, 1)
+
+hospital <- data.frame(Freq, bloodp, first, second, finaldecision)
+
+boxplot(
+  bloodp ~ finaldecision,
+  data = hospital,
+  names = c("Low Priority", "High Priority"),
+  main = "Blood Pressure by Final Decision",
+  ylab = "Blood Pressure"
+)
+
+hist(
+  bloodp,
+  main = "Histogram of Patient Blood Pressure",
+  xlab = "Blood Pressure"
+)
