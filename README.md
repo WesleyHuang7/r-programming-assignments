@@ -71,3 +71,41 @@ hist(
   xlab = "Blood Pressure"
 )
 ```
+
+## Module 5 - Matrix Analysis
+This module explores matrix operations in R, specifically calculating determinants and inverses.
+
+Two matrices were created using sequential values:
+
+A <- matrix(1:100, nrow = 10)  
+B <- matrix(1:1000, nrow = 10)
+
+Matrix A is a 10 × 10 square matrix, while matrix B is a 10 × 100 rectangular matrix. Only square matrices can have determinants and inverses.
+
+The determinant of matrix A was calculated using the det() function and the result was 0. A determinant of zero indicates that the matrix is singular, meaning it does not have an inverse. When attempting to compute the inverse using solve(A), R returned an error confirming that matrix A cannot be inverted.
+
+Matrix B is not square, so R returned errors when attempting to compute both its determinant and inverse. This demonstrates that determinants and inverses are only defined for square matrices.
+
+Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
+
+### R Code
+
+```r
+A <- matrix(1:100, nrow = 10)
+B <- matrix(1:1000, nrow = 10)
+
+dim(A)
+dim(B)
+
+detA <- det(A)
+detA
+
+invA <- tryCatch(solve(A), error = function(e) e$message)
+invA
+
+detB <- tryCatch(det(B), error = function(e) e$message)
+detB
+
+invB <- tryCatch(solve(B), error = function(e) e$message)
+invB
+```
