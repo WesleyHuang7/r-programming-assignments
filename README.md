@@ -109,3 +109,36 @@ detB
 invB <- tryCatch(solve(B), error = function(e) e$message)
 invB
 ```
+
+## Module 6 – Matrix Operations in R
+
+This module explores matrix operations in R, including matrix addition, subtraction, diagonal matrices, and constructing matrices using the diag() function.
+
+Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
+
+### R Code
+
+```r
+# Create matrices A and B
+A <- matrix(c(2, 0, 1, 3), ncol = 2)
+B <- matrix(c(5, 2, 4, -1), ncol = 2)
+
+# Display matrices
+A
+B
+
+# Matrix addition
+A + B
+
+# Matrix subtraction
+A - B
+
+# Create diagonal matrix of size 4
+diag_matrix <- diag(c(4, 1, 2, 3))
+diag_matrix
+
+# Generate the required 5x5 matrix
+M <- diag(3, 5)
+M[,1] <- c(3, 2, 2, 2, 2)
+M
+```
