@@ -142,3 +142,60 @@ M <- diag(3, 5)
 M[,1] <- c(3, 2, 2, 2, 2)
 M
 ```
+## Module 7 – Object-Oriented Systems in R (S3 vs S4)
+
+This module explores object-oriented programming concepts in R using a custom dataset. The assignment demonstrates generic functions, object types, and differences between S3 and S4 systems.
+
+Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
+
+### R Code
+
+```r
+# Create custom dataset
+students <- data.frame(
+  name = c("Alex", "Brian", "Cathy", "Diana", "Evan"),
+  age = c(20, 21, 19, 22, 20),
+  GPA = c(3.4, 3.7, 3.2, 3.9, 3.5)
+)
+
+students
+
+# Generic functions and object inspection
+class(students)
+typeof(students)
+isS4(students)
+
+summary(students)
+head(students)
+
+# S3 example
+s3_student <- list(name = "Myself", age = 29, GPA = 3.5)
+class(s3_student) <- "student"
+
+print.student <- function(x) {
+  cat("Student Name:", x$name, "\n")
+  cat("Age:", x$age, "\n")
+  cat("GPA:", x$GPA, "\n")
+}
+
+s3_student
+
+# S4 example
+setClass(
+  "student",
+  slots = list(
+    name = "character",
+    age = "numeric",
+    GPA = "numeric"
+  )
+)
+
+s4_student <- new(
+  "student",
+  name = "Myself",
+  age = 29,
+  GPA = 3.5
+)
+
+s4_student
+```
