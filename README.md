@@ -199,3 +199,30 @@ s4_student <- new(
 
 s4_student
 ```
+## Module 8 – Importing, Grouping, and Filtering Data in R
+
+This module imports a dataset, calculates mean grade by sex using the `plyr` package, filters student names containing the letter i, and exports the results to CSV files.
+
+Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
+
+### R Code
+
+```r
+library(plyr)
+
+students <- read.table(file.choose(), header = TRUE, sep = ",")
+
+students
+
+students_gendered_mean <- ddply(students, "Sex", transform, Grade.Average = mean(Grade))
+
+students_gendered_mean
+
+write.table(students_gendered_mean, "Students_Gendered_Mean.csv", sep = ",", row.names = FALSE)
+
+i_students <- subset(students, grepl("[iI]", students$Name))
+
+i_students
+
+write.table(i_students, "I_Students.csv", sep = ",", row.names = FALSE)
+```
