@@ -226,3 +226,48 @@ i_students
 
 write.table(i_students, "I_Students.csv", sep = ",", row.names = FALSE)
 ```
+## Module 9 – Visualization Systems in R
+
+This module compares three visualization systems in R: base graphics, lattice, and ggplot2 using the iris dataset. It demonstrates how each system creates visualizations and highlights differences in syntax, flexibility, and output quality.
+
+Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
+
+### R Code
+
+```r
+data("iris")
+head(iris)
+
+library(lattice)
+library(ggplot2)
+
+# Base R Plot
+plot(
+  iris$Sepal.Length,
+  iris$Petal.Length,
+  main = "Base R: Sepal Length vs Petal Length",
+  xlab = "Sepal Length",
+  ylab = "Petal Length",
+  col = as.numeric(iris$Species),
+  pch = 19
+)
+
+# Lattice Plot
+xyplot(
+  Petal.Length ~ Sepal.Length | Species,
+  data = iris,
+  main = "Lattice: Petal Length vs Sepal Length by Species",
+  xlab = "Sepal Length",
+  ylab = "Petal Length"
+)
+
+# ggplot2 Plot
+ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "ggplot2: Sepal Length vs Petal Length by Species",
+    x = "Sepal Length",
+    y = "Petal Length"
+  )
+```
