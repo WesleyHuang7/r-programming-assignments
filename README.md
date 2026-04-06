@@ -272,53 +272,60 @@ ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
   )
 ```
 
-## Module 11 - Tufte Visualizastion in R
+## Module 11 - Debugging Tukey Outlier Function
 
-This module recreates a visualization from Dr. Piwek’s Tufte post using R. It focuses on customizing a simple plot with labels and formatting to improve clarity and presentation.
+This module focuses on reproducing, diagnosing, and fixing a bug in an R function that detects rows of a numeric matrix that are outliers in every column using the Tukey rule. The corrected version replaces an incorrect logical operator and adds simple defensive checks for safer use.
 
 Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
 
 ### R Code
 
 ```r
-x <- 1967:1977
-y <- c(0.5, 1.8, 4.6, 5.3, 5.3, 5.7, 5.4, 5.0, 5.5, 6.0, 5.0)
+tukey.outlier <- function(x, k = 1.5) {
+  q1 <- quantile(x, 0.25, na.rm = TRUE)
+  q3 <- quantile(x, 0.75, na.rm = TRUE)
+  iqr <- q3 - q1
+  x < (q1 - k * iqr) | x > (q3 + k * iqr)
+}
 
-plot(
-  y ~ x,
-  axes = FALSE,
-  xlab = "",
-  ylab = "",
-  pch = 16,
-  type = "b"
-)
+tukey_multiple <- function(x) {
+  outliers <- array(TRUE, dim = dim(x))
+  for (j in 1:ncol(x)) {
+    outliers[, j] <- outliers[, j] && tukey.outlier(x[, j])
+  }
+  outlier.vec <- vector("logical", length = nrow(x))
+  for (i in 1:nrow(x)) {
+    outlier.vec[i] <- all(outliers[i, ])
+  }
+  return(outlier.vec)
+}
 
-axis(1, at = x, labels = x, tick = FALSE, family = "serif")
+set.seed(123)
+test_mat <- matrix(rnorm(50), nrow = 10)
 
-axis(
-  2,
-  at = seq(1, 6, 1),
-  labels = sprintf("$%s", seq(300, 400, 20)),
-  tick = FALSE,
-  las = 2,
-  family = "serif"
-)
+# Uncomment this line only when you want to reproduce the error
+# tukey_multiple(test_mat)
 
-abline(h = 6, lty = 2)
-abline(h = 5, lty = 2)
+corrected_tukey <- function(x) {
+  if (!is.matrix(x)) {
+    stop("x must be a matrix.")
+  }
+  if (!is.numeric(x)) {
+    stop("x must be a numeric matrix.")
+  }
 
-text(
-  max(x),
-  min(y) * 2.5,
-  "Per capita\nbudget expenditures\nin constant dollars",
-  adj = 1,
-  family = "serif"
-)
+  outliers <- array(TRUE, dim = dim(x))
+  for (j in seq_len(ncol(x))) {
+    outliers[, j] <- outliers[, j] & tukey.outlier(x[, j])
+  }
 
-text(
-  max(x),
-  max(y) / 1.08,
-  labels = "5%",
-  family = "serif"
-)
+  outlier.vec <- logical(nrow(x))
+  for (i in seq_len(nrow(x))) {
+    outlier.vec[i] <- all(outliers[i, ])
+  }
+
+  outlier.vec
+}
+
+corrected_tukey(test_mat)
 ```
