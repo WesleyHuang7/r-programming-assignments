@@ -271,3 +271,54 @@ ggplot(iris, aes(x = Sepal.Length, y = Petal.Length, color = Species)) +
     y = "Petal Length"
   )
 ```
+
+## Module 11 - Tufte Visualizastion in R
+
+This module recreates a visualization from Dr. Piwek’s Tufte post using R. It focuses on customizing a simple plot with labels and formatting to improve clarity and presentation.
+
+Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
+
+### R Code
+
+```r
+x <- 1967:1977
+y <- c(0.5, 1.8, 4.6, 5.3, 5.3, 5.7, 5.4, 5.0, 5.5, 6.0, 5.0)
+
+plot(
+  y ~ x,
+  axes = FALSE,
+  xlab = "",
+  ylab = "",
+  pch = 16,
+  type = "b"
+)
+
+axis(1, at = x, labels = x, tick = FALSE, family = "serif")
+
+axis(
+  2,
+  at = seq(1, 6, 1),
+  labels = sprintf("$%s", seq(300, 400, 20)),
+  tick = FALSE,
+  las = 2,
+  family = "serif"
+)
+
+abline(h = 6, lty = 2)
+abline(h = 5, lty = 2)
+
+text(
+  max(x),
+  min(y) * 2.5,
+  "Per capita\nbudget expenditures\nin constant dollars",
+  adj = 1,
+  family = "serif"
+)
+
+text(
+  max(x),
+  max(y) / 1.08,
+  labels = "5%",
+  family = "serif"
+)
+```
