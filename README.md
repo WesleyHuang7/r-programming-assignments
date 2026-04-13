@@ -329,3 +329,68 @@ corrected_tukey <- function(x) {
 
 corrected_tukey(test_mat)
 ```
+
+## Module 12 – R Markdown Primer
+
+This module introduces the basics of R Markdown by combining narrative writing, LaTeX math, and executable R code in one document. The final output was knitted to HTML to show how source code and rendered results work together in a reproducible workflow.
+
+Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
+
+### R Code
+
+```r
+---
+title: "My R Markdown Primer"
+author: "Wesley Huang"
+date: "April 13, 2026"
+output: html_document
+---
+
+# Introduction
+
+R Markdown is a file format that lets you combine regular writing, R code, and formatted output in one document. It is useful because it keeps the explanation and the analysis together, which makes the work easier to follow and reproduce.
+
+This is a simple example of narrative text written in Markdown. One helpful part of R Markdown is that it can mix normal paragraphs with code chunks and math expressions in the same file.
+
+An inline math example is $\alpha + \beta = \gamma$.
+
+A displayed equation example is:
+
+$$
+y = mx + b
+$$
+
+# Load Data
+
+```{r}
+library(ggplot2)
+data(mtcars)
+head(mtcars)
+```
+
+# Summary Statistics
+
+The code chunk below gives a quick summary of the dataset.
+
+```{r}
+summary(mtcars)
+```
+
+# Visualization
+
+The next code chunk creates a scatter plot showing the relationship between car weight and miles per gallon.
+
+```{r}
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point() +
+  labs(
+    title = "Miles Per Gallon vs Car Weight",
+    x = "Weight",
+    y = "Miles Per Gallon"
+  )
+```
+
+# Reflection
+
+Using R Markdown was different from writing a plain report because it allowed me to keep my writing, code, and results together in one place. I liked that the output updated directly from the code, which makes the document more organized and reproducible. One thing I noticed is that formatting matters a lot, so even small mistakes in chunk syntax or Markdown symbols can affect the final output.
+```
