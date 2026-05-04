@@ -398,54 +398,11 @@ Using R Markdown was different from writing a plain report because it allowed me
 ```
 ## Final Project – R Markdown Primer
 
-This project introduces the basics of R Markdown by combining narrative writing, LaTeX math, and executable R code in one document. The final output was knitted to HTML to demonstrate how source code and rendered results work together in a reproducible workflow.
+This project focuses on learning the basics of R Markdown by combining writing, LaTeX math, and executable R code into one document. The final report was knitted to HTML to demonstrate how code and output can be presented together in a clean and organized way.
 
 Blog link: https://wesleyhuang7.wixsite.com/r-programming-journa
 
-### R Code
-
----
-title: "My R Markdown Primer"
-author: "Wesley Huang"
-date: "April 13, 2026"
-output: html_document
----
-
-# Introduction
-
-R Markdown is a file format that lets you combine writing, code, and output into one document. It keeps everything organized and makes the analysis easier to follow.
-
-This is a simple paragraph written in Markdown.
-
-An inline math example is $\alpha + \beta = \gamma$.
-
-A displayed equation example is:
-
-$$
-y = mx + b
-$$
-
-# Load Data
-
-```{r}
-library(ggplot2)
-data(mtcars)
-head(mtcars)
+### Files
+- module12_markdown_primer.Rmd
+- module12_markdown_primer.html
 ```
-
-# Summary Statistics
-
-```{r}
-summary(mtcars)
-```
-
-# Visualization
-
-```{r}
-ggplot(mtcars, aes(x = wt, y = mpg)) +
-  geom_point()
-
-
-# Reflection
-
-Using R Markdown was different from writing a normal report because everything is in one place. The code, output, and writing are connected, which makes it easier to organize and understand.
