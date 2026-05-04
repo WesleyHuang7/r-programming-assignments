@@ -1,15 +1,15 @@
 ---
 title: "My R Markdown Primer"
 author: "Wesley Huang"
-date: "April 13, 2026"
+date: "2026-05-04"
 output: html_document
 ---
 
 # Introduction
 
-R Markdown is a file format that lets you combine regular writing, R code, and formatted output in one document. It is useful because it keeps the explanation and the analysis together, which makes the work easier to follow and reproduce.
+R Markdown is a file format that lets you combine writing, code, and output into one document. It keeps everything organized and makes the analysis easier to follow.
 
-This is a simple example of narrative text written in Markdown. One helpful part of R Markdown is that it can mix normal paragraphs with code chunks and math expressions in the same file.
+This is a simple paragraph written in Markdown.
 
 An inline math example is $\alpha + \beta = \gamma$.
 
@@ -29,26 +29,17 @@ head(mtcars)
 
 # Summary Statistics
 
-The code chunk below gives a quick summary of the dataset.
-
 ```{r}
 summary(mtcars)
 ```
 
 # Visualization
 
-The next code chunk creates a scatter plot showing the relationship between car weight and miles per gallon.
-
 ```{r}
 ggplot(mtcars, aes(x = wt, y = mpg)) +
-  geom_point() +
-  labs(
-    title = "Miles Per Gallon vs Car Weight",
-    x = "Weight",
-    y = "Miles Per Gallon"
-  )
+  geom_point()
 ```
 
 # Reflection
 
-Using R Markdown was different from writing a plain report because it allowed me to keep my writing, code, and results together in one place. I liked that the output updated directly from the code, which makes the document more organized and reproducible. One thing I noticed is that formatting matters a lot, so even small mistakes in chunk syntax or Markdown symbols can affect the final output.
+Using R Markdown was different from writing a normal report because everything is in one place. The code, output, and writing are connected, which makes it easier to organize and understand.
