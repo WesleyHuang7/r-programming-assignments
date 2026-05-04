@@ -1,15 +1,15 @@
 ---
 title: "My R Markdown Primer"
 author: "Wesley Huang"
-date: "2026-05-04"
+date: "April 13, 2026"
 output: html_document
 ---
 
 # Introduction
 
-R Markdown is a file format that lets you combine writing, code, and output into one document. It keeps everything organized and makes the analysis easier to follow.
+Before this assignment, I had never really used R Markdown, so I wasn’t too sure what to expect. From what I understand now, R Markdown is basically a way to combine your writing, code, and output all into one document. Instead of separating everything, you can keep it all in one place, which makes it a lot easier to follow.
 
-This is a simple paragraph written in Markdown.
+One thing I noticed right away is how clean everything looks once it’s knitted. It feels more like a real report instead of just code in the console.
 
 An inline math example is $\alpha + \beta = \gamma$.
 
@@ -29,17 +29,26 @@ head(mtcars)
 
 # Summary Statistics
 
+The code below gives a quick summary of the dataset so we can see basic information about the variables.
+
 ```{r}
 summary(mtcars)
 ```
 
 # Visualization
 
+Here I created a simple scatter plot to look at the relationship between car weight and miles per gallon.
+
 ```{r}
 ggplot(mtcars, aes(x = wt, y = mpg)) +
-  geom_point()
+  geom_point() +
+  labs(
+    title = "Miles Per Gallon vs Car Weight",
+    x = "Weight",
+    y = "Miles Per Gallon"
+  )
 ```
 
 # Reflection
 
-Using R Markdown was different from writing a normal report because everything is in one place. The code, output, and writing are connected, which makes it easier to organize and understand.
+After using R Markdown, I can see why it’s useful. Being able to combine everything into one document makes it much easier to stay organized, especially for assignments like this. At first, the formatting was a little confusing, but once I understood how the chunks and text work together, it started to make more sense. Overall, I think this is a better way to present work compared to writing everything separately.
